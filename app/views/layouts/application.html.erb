@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shoppe</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  
+ <nav class="navbar navbar-inverse" style="float:top;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" <%= link_to "Zone-Tag", root_path %> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+ <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">Cover</h3>
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li  class="<%= 'active' if params[:controller] == 'home' %>"><%= link_to "Home", root_path %></li> 
+                  <li  class="<%= 'active' if params[:controller] == 'products' %>"><%= link_to "Products", products_path %></li>
+                  <li  class="<%= 'active' if params[:controller] == 'contact' %>"><%= link_to "Contact", products_path %></li>
+                  <li  class="<%= 'active' if params[:controller] == 'about' %>"><%= link_to "About", products_path %></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+
+
+<p style = "color:green;" ><%= flash[:notice] %></p>
+
+<% if has_order? %>
+<p style="border:1px solid black;padding:10px;">
+  You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
+  <%= number_to_currency current_order.total_before_tax %>.
+  <%= flash[:notice] %>
+  <%= link_to "View basket", basket_path %> | <%= link_to "Checkout", checkout_path %>
+</p>
+<% end %>
+
+<%= yield %>
+
+
+</body>
+</html>
