@@ -1,20 +1,31 @@
-<h2>Products</h2>
 
-<% @products.each do |category, products| %>
-  <h3><%= category.name %></h3>
-  <ul class="list-inline">
-    <% products.each do |product| %>
-    <li >
-      <h4><%= link_to product.name, product_path(product.permalink) %></h4>
+            <% @products.each do |category, products| %>
+              <h3><%= category.name %></h3>
+              <ul class="list-inline">
+                <% products.each do |product| %>
+                <div class="row">
 
-  <div class="row">
-  <div class="col-md-6">
-    <%= image_tag product.default_image.path, :width => '180px', :height => '120px' %> 
-    <b><%= product.short_description %></b> 
-  </div>
-</div>
-      <p><b>Price:</b> <%= number_to_currency product.price %></p>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                             <%= image_tag product.default_image.path, :width => '320px', :height => '150px' %> 
+                            <div class="caption">
+                                <h4 class="pull-right"><%= number_to_currency product.price %></h4>
+                                <h4><%= link_to product.name, product_path(product.permalink)%></h4>
+                                </h4>
+                               <p><%= product.short_description %></p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                  <% end %>
+                  <ul>
+                  <% end %>
