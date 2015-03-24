@@ -1,13 +1,14 @@
+<h2>Products</h2>
 
-            <% @products.each do |category, products| %>
+<% @products.each do |category, products| %>
               <h3><%= category.name %></h3>
-              <ul class="list-inline">
+              
                 <% products.each do |product| %>
                 <div class="row">
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="col-md-3 col-md-3">
                         <div class="thumbnail">
-                             <%= image_tag product.default_image.path, :width => '320px', :height => '150px' %> 
+                             <%= image_tag product.default_image.path, :width => '220px', :height => '150px' %> 
                             <div class="caption">
                                 <h4 class="pull-right"><%= number_to_currency product.price %></h4>
                                 <h4><%= link_to product.name, product_path(product.permalink)%></h4>
@@ -27,5 +28,5 @@
                         </div>
                     </div>
                   <% end %>
-                  <ul>
+                  
                   <% end %>
