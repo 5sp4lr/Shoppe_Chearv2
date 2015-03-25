@@ -36,11 +36,10 @@
     </nav> 
 
 
-<hr>
-<hr>
 
-<p style = "color:green;" ><%= flash[:notice] %></p>
-
+<div id= "notice" style="padding-top:50px;padding-bottom:30px;">
+  <p style = "color:green;" ><%= flash[:notice] %></p>
+<div>
 <% if has_order? %>
 <p style="border:1px solid black;padding:10px;">
   You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
