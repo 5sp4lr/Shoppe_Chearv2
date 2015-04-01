@@ -1,62 +1,103 @@
-             
-             <div class="col-md-6">
-				<% if @product.default_image %>
-                <div class="thumbnail">
-                    <%= image_tag @product.default_image.path,:width => '400px', :height => '300px' %> 
-                 <% end %>
-		<div class="caption-full">
-                        <h4 class="pull-right"><%= number_to_currency @product.price %></h4>
-						<span class="btn btn-info pull-right"><%= link_to "Add to basket", product_path(@product.permalink), :method => :post %></span>
-                        <h4><%= link_to @product.name, product_path(@product.permalink)%></h4>
-                        <p><%= @product.short_description %></p>
-                        <p><%= simple_format @product.description %></p>
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right">3 reviews</p>
-                        <p>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            4.0 stars
-                        </p>
-                    </div>
-                </div>
-		<p><%= link_to "Back to list", root_path %></p>
+ <div class="col-md-6">
+    <div class="thumbnail">
+    	<%= link_to "Add to Cart", product_path(@product.permalink), :method => :post, :class => "btn btn-warning" %>
+        <%= image_tag @product.default_image.path, :width => '400px', :height => '300px' %>
+        <div class="caption-full">
+        	<% if @product.has_variants? %>
+    			<table class="variants">
+    				<% for variant in @product.variants %>
+       				 <tr>
+        			 <td></td>
+        			 </tr>
+        				<% if variant.in_stock? %>
+            				<p class="stock yes">Item is in Stock!</p>
+        				<% end %>
+					<% end %>
+    			</table>
+			<% end %>
+		    <h4 class="pull-right"><%= number_to_currency @product.price %></h4>
+            <td class="buy">
+            <h4><%= link_to @product.name, product_path(@product.permalink)%></h4>
+           <p><%= simple_format @product.description %></p>
+        </div>
 
-                <div class="well">
+        <div class="ratings">
+            <p class="pull-right">3 reviews</p>
+            <p>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                4.0 stars
+            </p>
+        </div>
+    </div>
 
-                    <div class="text-right">
-                        <a class="btn btn-success">Leave a Review</a>
-                    </div>
+<hr>
 
-                    <hr>
+  	
+	<% unless @attributes.empty? %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-7">
+		  		<table class="attributes table table-striped">
+		    		<% for attribute in @attributes %>
+		      			<tr>
+		        			<th>
+		          				<%= attribute.key %>
+		        			</th>
+		        			<td>
+		          				<%= link_to attribute.value, product_filter_path(:key => attribute.key, :value => attribute.value) %>
+		        			</td>
+		      			</tr>
+		    		<% end %>
+		  		</table>
+			</div>
+		</div>
+	</div>
+<% end %>		
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">10 days ago</span>
-                            <p>This product was great in terms of quality. I would definitely buy another!</p>
-                        </div>
-                    </div>
+<hr>
+<!-- Reviews -->
 
-                    <hr>
+    <div class="well">
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star"></span>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                            Anonymous
-                            <span class="pull-right">12 days ago</span>
-                            <p>I've alredy ordered another one!</p>
-                        </div>
-                    </div>
+        <div class="text-right">
+            <a class="btn btn-success">Leave a Review</a>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-12">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                Anonymous
+                <span class="pull-right">10 days ago</span>
+                <p>This product was great in terms of quality. I would definitely buy another!</p>
+            </div>
+        </div>
+
+        <hr>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star-empty"></span>
+                Anonymous
+                <span class="pull-right">12 days ago</span>
+                <p>I've alredy ordered another one!</p>
+            </div>
+        </div>
+      </div> 
+
+      

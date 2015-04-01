@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   mount Shoppe::Engine => "/shoppe"
 
+
+#Products
 get 'products' => 'products#index', :as => 'products'
 get "product/:permalink", to: "products#show", as: "product"
 post "product/:permalink", to: "products#buy", as: "buy"
+get 'products/filter' => 'products#filter', :as => 'product_filter'
 
 
 #Root is home obv
