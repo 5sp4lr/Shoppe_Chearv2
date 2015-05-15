@@ -1,24 +1,45 @@
 <h2>Checkout</h2>
 <%= render 'items', :order => @order %>
 
-<%= form_for @order, :url => checkout_path do |f| %>
+<%= bootstrap_form_for @order, :url => checkout_path do |f| %>
+<!--
+<form class="form-inline">
+  <div class="form-group">
+    <label for="FirstName"><%= f.label :first_name %></label>
+    <input type="text" class="form-control" id="FirstName" placeholder="First Name"><%= @first_name %>
+  </div>
+  <div class="form-group">
+    <label for="SecondName"><%= f.label :last_name%></label>
+    <input type="text" class="form-control" id="SecondName" placeholder="Second Name"><%= @last_name %>
+  </div>
+</form>
+
+<form class="form-inline">
+  <div class="form-group">
+    <label for="exampleInputName2">Name</label>
+    <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail2">Email</label>
+    <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
+  </div>
+</form>
+-->
+ 
+ <hr> 
+
   <dl>
-    <dt><%= f.label :first_name, 'Name' %></dt>
     <dd><%= f.text_field :first_name, :placeholder => 'First Name'  %> <%= f.text_field :last_name, :placeholder => 'Last Name'%></dd>
 
-    <dt><%= f.label :billing_address1, 'Address' %></dt>
-    <dd><%= f.text_field :billing_address1 %></dd>
-    <dd><%= f.text_field :billing_address2 %></dd>
-    <dd><%= f.text_field :billing_address3 %></dd>
-    <dd><%= f.text_field :billing_address4 %></dd>
-    <dt><%= f.label :billing_postcode, 'Post code' %></dt>
-    <dd><%= f.text_field :billing_postcode %></dd>
-    <dd><%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name, :include_blank => true %></dd>
-
-    <dt><%= f.label :email_address %></dt>
+    
+    <dd><%= f.text_field :billing_address2, label: "Post Office", help: "Enter any of the following Post Offices: --------------   
+    (1)Post Office A
+    (2)Post Office B" %></dd>
+   
+    
     <dd><%= f.text_field :email_address %></dd>
 
-    <dt><%= f.label :phone_number %></dt>
+    
     <dd><%= f.text_field :phone_number %></dd>
 
     <dd><%= f.submit 'Continue' %></dd>

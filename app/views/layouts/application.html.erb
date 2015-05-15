@@ -19,21 +19,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Zone-Tag</a>
+                <a class="navbar-brand",  href="#">
+                <span class="glyphicon glyphicon-shopping-cart">Zone-Tag</span></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                   <li  class="<%= 'active' if params[:controller] == 'home' %>"><%= link_to "Home", root_path %></li> 
                   <li  class="<%= 'active' if params[:controller] == 'products' %>"><%= link_to "Products", products_path %></li>
-                  <li  class="<%= 'active' if params[:controller] == 'contact' %>"><%= link_to "Contact", products_path %></li>
                   <li  class="<%= 'active' if params[:controller] == 'about' %>"><%= link_to "About", products_path %></li>
+                 
+            <% if has_order? && current_order.has_items? %>
+            <b>#{pluralize current_order.total_items, 'item'}</b>
+            <b>#{number_to_currency current_order.total_before_tax}</b>
+
+                  <li><button type="button" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"><%= link_to "Cart", basket_path %></span></span></button> </li>
+          <% else %>
+          <li><button type="button" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"><%= link_to "Cart", basket_path %></span></span></button> </li>
+          <% end %>
+
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav> 
+
 
 
   <%if params[:action] == 'show' %> 

@@ -20,24 +20,12 @@
             <h4><%= link_to @product.name, product_path(@product.permalink)%></h4>
            <p><%= simple_format @product.description %></p>
         </div>
-
-        <div class="ratings">
-            <p class="pull-right">3 reviews</p>
-            <p>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star"></span>
-                <span class="glyphicon glyphicon-star-empty"></span>
-                4.0 stars
-            </p>
-        </div>
     </div>
 
-<hr>
 
   	
 	<% unless @attributes.empty? %>
+    <hr>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-7">
@@ -58,10 +46,10 @@
 	</div>
 <% end %>		
 
-<hr>
-<!-- Reviews -->
 
-    <div class="well">
+<!-- Reviews -->
+ <!--     <hr>
+  <div class="well">
 
         <div class="text-right">
             <a class="btn btn-success">Leave a Review</a>
@@ -98,6 +86,6 @@
                 <p>I've alredy ordered another one!</p>
             </div>
         </div>
-      </div> 
+      </div>  -->
 
       
