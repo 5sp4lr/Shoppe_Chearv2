@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   def index
     @products = Shoppe::Product.root.ordered.includes(:product_category, :variants)
     @products = @products.group_by(&:product_category)
+    @q = Shoppe::Product.ransack(params[:q])
+    @product = @q.result(distinct: true)
   end
 
   def show

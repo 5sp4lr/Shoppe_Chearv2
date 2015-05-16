@@ -4,7 +4,7 @@ gem 'bootstrap-sass', :git => 'https://github.com/twbs/bootstrap-sass.git', :bra
 gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 
-gem "shoppe-stripe", require: "shoppe/stripe"
+gem 'ransack'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.1.rc4'
