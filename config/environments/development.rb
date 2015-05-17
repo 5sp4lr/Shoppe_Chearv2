@@ -1,4 +1,6 @@
 Rails.application.configure do
+
+  config.i18n.default_locale = :'en-GB'
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

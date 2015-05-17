@@ -5,6 +5,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap_form'
 
 gem 'ransack'
+gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.1.rc4'
@@ -49,3 +50,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'shoppe', '~> 1.0'
+gem 'rails-i18n', '~> 4.0.0' # For 4.0.x

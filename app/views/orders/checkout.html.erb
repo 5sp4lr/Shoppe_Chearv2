@@ -1,7 +1,9 @@
-<h2>Checkout</h2>
+
+  <h2>Checkout</h2>
 <%= render 'items', :order => @order %>
 
 <%= bootstrap_form_for @order, :url => checkout_path do |f| %>
+<%= f.error_messages %>
 <!--
 <form class="form-inline">
   <div class="form-group">
@@ -13,7 +15,6 @@
     <input type="text" class="form-control" id="SecondName" placeholder="Second Name"><%= @last_name %>
   </div>
 </form>
-
 <form class="form-inline">
   <div class="form-group">
     <label for="exampleInputName2">Name</label>
@@ -42,6 +43,25 @@
     
     <dd><%= f.text_field :phone_number %></dd>
 
-    <dd><%= f.submit 'Continue' %></dd>
+    <div class = "invis">
+      <dd>
+          <%= f.text_field :billing_address1, :placeholder => "Line 1" %>
+        </dd>
+        <dd>
+          <%= f.text_field :billing_address3, :placeholder => "Town/City" %>
+        </dd>
+        <dd>
+          <%= f.text_field :billing_address4, :placeholder => "County" %>
+        </dd>
+        <dd>
+          <%= f.text_field :billing_postcode, :placeholder => "Postcode", :class => 'postcode' %>
+        </dd>
+        <dd>
+          <%= f.collection_select :billing_country_id, Shoppe::Country.ordered, :id, :name %>
+        </dd>
+    </div>
   </dl>
+  <p class="submit">
+    <%= f.submit "Continue to payment" %>
+  </p>
 <% end %>
