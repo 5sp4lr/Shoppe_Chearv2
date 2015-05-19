@@ -14,8 +14,70 @@
 margin: 0px;
 }
 
-a{
+a, a:hover{
 	text-decoration: none;
+}
+
+
+
+.info{
+  background-color: #FCFCFC;
+
+}
+
+footer{
+  background-color: #222222;
+  clear:both;
+  min-width:100%;
+  color: gray;  
+}
+
+footer a {
+ color: white;
+}
+
+.number{
+  color:white;
+  font-size: 30px;
+  padding: none;
+}
+
+.links{
+  padding: 90px;
+}
+
+.links h5{
+  text-decoration:underline;
+}
+
+div.callUs {
+    width:50%;
+    float:left;
+    p.number {color:#fff; font-size:2.2em;  font-weight:bold; margin:2px 0;}
+    ul.social {
+      margin-top:25px;
+      overflow:hidden;
+      li {float:left; margin-right:15px;}
+      li a {
+        display:block;
+        width:24px;
+        height:24px;
+        text-indent:-40000px;
+        opacity:0.3;
+        background-size:24px;
+        &:hover { opacity:0.7;}
+      }
+      li.facebook a { background-image:image-url('social/facebook.svg')}
+      li.twitter a { background-image:image-url('social/twitter.svg')}
+      li.pinterest a { background-image:image-url('social/pinterest.svg')}
+      li.linkedin a { background-image:image-url('social/linkedin.svg')}
+      li.youtube a { background-image:image-url('social/youtube.svg')}
+      li.vimeo a { background-image:image-url('social/vimeo.svg')}
+
+    }
+  }
+.copyright{
+  padding: 50px;
 }
 /*.carousel-holder{
 width: 1200px;

@@ -13,8 +13,12 @@ get 'products/filter' => 'products#filter', :as => 'product_filter'
 root to: "home#index"
 
 #Basket
-get "basket", to: "orders#show"
-delete "basket", to: "orders#destroy"
+ get 'basket' => 'orders#show', :as => 'basket'
+delete 'basket' => 'orders#destroy', :as => 'empty_basket'
+post 'basket/:order_item_id' => 'orders#change_item_quantity', :as => 'adjust_basket_item_quantity'
+delete 'basket/:order_item_id' => 'orders#change_item_quantity'
+delete 'basket/delete/:order_item_id' => 'orders#remove_item', :as => 'remove_basket_item'
+
 
 #Checkout
 match "checkout", to: "orders#checkout", as: "checkout", via: [:get, :patch]

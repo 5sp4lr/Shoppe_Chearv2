@@ -29,15 +29,10 @@
                   <li  class="<%= 'active' if params[:controller] == 'products' %>"><%= link_to "Products", products_path %></li>
                   <li  class="<%= 'active' if params[:controller] == 'about' %>"><%= link_to "About", products_path %></li>
                  
-            <% if has_order? && current_order.has_items? %>
-            <b>#{pluralize current_order.total_items, 'item'}</b>
-            <b>#{number_to_currency current_order.total_before_tax}</b>
+            
 
-                  <li><button type="button" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"><%= link_to "Cart", basket_path %></span></span></button> </li>
-          <% else %>
-          <li><button type="button" class="btn btn-default btn-lg"> <span class="glyphicon glyphicon-shopping-cart"><%= link_to "Cart", basket_path %></span></span></button> </li>
-          <% end %>
-
+                  <li><button type="button" class="btn btn-default btn-lg" id="Cart"> <span class="glyphicon glyphicon-shopping-cart"><%= link_to "Cart", basket_path %></span></span></button> </li>
+          
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -71,19 +66,66 @@
   <div>
 <%end%>
 
-    <!-- /.container -->
-
-    <div class="container">
 
         <hr>
 
         <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
+<footer class="main">
+  <div class = "row">
+    <div class = "col-md-4">        
+      <ul class="links">
+        <h5>Policies</h5>
+        <li>
+          <%= link_to "Privacy policy", products_path %>
+        </li>
+        <li>
+          <%= link_to "Returns policy", products_path%>
+        </li>
+    </ul>
+  </div>
+
+<div class = "col-md-4">
+  <div class="callUs">
+    <p>Got any questions? Call us today:</p>
+    <p class="number">1758 723 6387</p>
+    <p>We're available 24 hours a day all days of the week.</p>
+    <!-- Links to social media
+    -->
+  <ul class="social">
+    <li class="twitter">
+      <%= link_to "Twitter", 'http://twitter.com' %>
+    </li>
+    <li class="facebook">
+      <%= link_to "Facebook", "http://facebook.com" %>
+    </li>
+    <li class="pinterest">
+      <%= link_to "Pinterest", "http://pinterest.com" %>
+    </li>
+    <li class="linkedin">
+      <%= link_to "Linked In", "http://linkedin.com" %>
+    </li>
+    <li class="vimeo">
+      <%= link_to "Vimeo", "http://vimeo.com" %>
+    </li>
+    <li class="youtube">
+      <%= link_to "Youtube", "http://youtube.com" %>
+    </li>
+  </ul>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="copyright">
+    <p>&copy; 2015. All Rights Reserved.</p>
+    <p>All third party logos &amp; product images &copy; their respective owners.</p>
+    <p>
+      Shoppe is a trading name of Niftyware Limited.<br />
+      Company registration number: 8514362.<br />
+      VAT registration number: GB 123 123 123.
+    </p>
+  </div>
+</div>
+</div>
         </footer>
 
     </div>
