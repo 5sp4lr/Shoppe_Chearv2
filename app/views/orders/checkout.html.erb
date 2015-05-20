@@ -1,5 +1,5 @@
-
-  <h2>Checkout</h2>
+<div class = "container">
+  <h2>Items</h2>
 <%= render 'items', :order => @order %>
 
 <%= bootstrap_form_for @order, :url => checkout_path do |f| %>
@@ -26,16 +26,15 @@
   </div>
 </form>
 -->
- 
+<div class = "container">
+  <h2>Checkout</h2>
  <hr> 
-
+ 
   <dl>
     <dd><%= f.text_field :first_name, :placeholder => 'First Name'  %> <%= f.text_field :last_name, :placeholder => 'Last Name'%></dd>
 
     
-    <dd><%= f.text_field :billing_address2, label: "Post Office", help: "Enter any of the following Post Offices: --------------   
-    (1)Post Office A
-    (2)Post Office B" %></dd>
+    <dd><%= f.text_field :billing_address2, label: "Post Office"%></dd>
    
     
     <dd><%= f.text_field :email_address %></dd>
@@ -62,6 +61,8 @@
     </div>
   </dl>
   <p class="submit">
-    <%= f.submit "Continue to payment" %>
+    <%= f.submit "Continue to payment", :class => "btn btn-success" %>
   </p>
 <% end %>
+</div>
+</div>

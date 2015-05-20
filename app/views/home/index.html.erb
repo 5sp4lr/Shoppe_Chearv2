@@ -9,24 +9,20 @@
 
   
             <div class="container">
-                <div class="row carousel-holder col-md-12">
+                <div class="row carousel-holder col-md-12" id="Carousel">
 
                     <div class="col-md-11">
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img class="slide-image" src="http://i.imgur.com/xMjNy9M.jpg" alt="">
+                                    <img class="slide-image" src="http://i.imgur.com/uRi04KW.jpg" alt="">
                                 </div>
                                 <div class="item">
-                                    <img class="slide-image" src="http://i.imgur.com/v0d3nth.jpg" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                    <img class="slide-image" src="http://i.imgur.com/A9sVxqO.jpg" alt="">
                                 </div>
                             </div>
                             <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -39,10 +35,11 @@
                     </div>
                 </div>
               
+    
 
-
-    <div class="row">
+    
         <% @products.each do |category, products| %>
+        <div class = "row">
             <h3><%= category.name %></h3>
         <% products.first(3).each do |product| %>
            <div class="col-md-4"> 
@@ -54,39 +51,32 @@
                     <h4><%= link_to product.name, product_path(product.permalink)%></h4>
                    <p><%= product.short_description %></p>
                 </div>
-                <div class="ratings">
-                    <p class="pull-right">15 reviews</p>
-                    <p>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                    </p>
-                </div>
             </div>
         </div> 
       <% end %>
+        </div>
       <% end %>
       </div>
-    </div>
-   </div>  
+   
+     
 
     <hr>
 <div class="info">
    <div class="row">
-        <div class = "col-lg-4"> 
+        <div class = "col-lg-6"> 
+          <span id = "railsmage">  
           <%= image_tag ("Rails.svg.png"),:width => '100px', :height => '140px' %>
+          </span>
           <h2>A Rails 4.0 engine</h2>
           <p>With over 826,006 known live websites, Ruby on rails is a framework that has created jop opportunities for countless programmers and developers and is constantly being made use of to create websites/webapps with more efficiency and sustainability. </p>
           <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <h2>Goal</h2>
           <p>Currently Students at the Sir Arthur Lewis Community College, we decided to create this ecommerce platform to give locally made products exposure both nationally and internationally. Doing this on the internet, will raise awarness in especially the youth, creating a path for them, as the leaders of the next generations </p>
           <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-3">
           <h2>Status</h2>
           <p>This is a website made without any funding,<b>FREE</b>.This website is still in its very early stages and functionallity on a whole is there, but features such as site wide search and account customizabilty are still in development. If this becomes a funded project, we hope to add more content to the site..</p>
           <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>

@@ -19,8 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand",  href="#">
-                <span class="glyphicon glyphicon-shopping-cart">Zone-Tag</span></a>
+                <span class="glyphicon glyphicon-shopping-cart"><%= link_to "Lucian Commerce", root_path, :class => "navbar-brand" %></span>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -32,7 +31,6 @@
             
 
                   <li><button type="button" class="btn btn-default btn-lg" id="Cart"> <span class="glyphicon glyphicon-shopping-cart"><%= link_to "Cart", basket_path %></span></span></button> </li>
-          
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -43,28 +41,24 @@
 
 
   <%if params[:action] == 'show' %> 
-<div id= "notice" style="margin-top:50px;padding:50px;">
+<div id= "notice" style="margin-top:10px;padding:50px;">
   <p style = "color:green;" ><%= flash[:notice] %></p>
-<div>
+</div> 
   <%end%>
 
 <% if has_order? %>
 <p style="border:1px solid black;padding:10px;">
-  You have <%= pluralize current_order.total_items, 'item'%> in your basket which cost
+  You have <%= pluralize current_order.total_items, 'item'%> in your Cart which cost
   <%= number_to_currency current_order.total_before_tax %>.
   <%= flash[:notice] %>
-  <%= link_to "View basket", basket_path %> | <%= link_to "Checkout", checkout_path %>
+  <%= link_to "View Cart", basket_path %> | <%= link_to "Checkout", checkout_path %>
 </p>
 <% end %>
 
 <%= yield %>
 
-<%if params[:controller] == 'home'%>
-<hr>
-  <div id= "notice">
-    <p style = "color:green;" ><%= flash[:notice] %></p>
-  <div>
-<%end%>
+
+
 
 
         <hr>

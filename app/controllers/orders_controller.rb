@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 def destroy
   current_order.destroy
   session[:order_id] = nil
-  redirect_to root_path, :notice => "Basket emptied successfully."
+  redirect_to basket_path, :notice => "Basket emptied successfully."
 end
 
 def remove_item
@@ -93,28 +93,12 @@ def payment
   end
 end
 
-  def confirmation
-    unless current_order.confirming?
-      redirect_to checkout_path
-      return
-    end
-    
-    if request.patch?
-      begin
-        current_order.confirm!
-        # This payment method should usually be called in a payment module or elsewhere but for the demo
-        # we are adding a payment to the order straight away.
-        current_order.payments.create(:method => "Credit Card", :amount => current_order.total, :reference => rand(10000) + 10000, :refundable => true)
-        session[:order_id] = nil
-        redirect_to root_path, :notice => "Order has been placed!"
-      rescue Shoppe::Errors::PaymentDeclined => e
-        flash[:alert] = "Payment was declined by the bank. #{e.message}"
-        redirect_to checkout_path
-      rescue Shoppe::Errors::InsufficientStockToFulfil
-        flash[:alert] = "We're terribly sorry but while you were checking out we ran out of stock of some of the items in your basket. Your basket has been updated with the maximum we can currently supply. If you wish to continue just use the button below."
-        redirect_to checkout_path
-      end
-    end
+ def confirmation
+  if request.post?
+    current_order.confirm!
+    session[:order_id] = nil
+    redirect_to basket_path, :notice => "Order has been placed successfully!"
   end
+end
     
 end
